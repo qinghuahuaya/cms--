@@ -29,16 +29,19 @@
           <div class="container row header mb-4">
             <h2>欢迎注册</h2>
           </div>
-          <form action="" class="container">
+          <!-- 表单自动填充 -->
+          <form autocomplete="off" action="" class="container">
             <!-- 账号 -->
             <div class="row mb-4 form-group">
               <span class="iconfont icon-yonghu"></span>
               <input type="text" class="form-control" name="username" />
+              <span style="display: none;">123</span>
             </div>
             <!-- 密码 -->
             <div class="row mb-4 form-group">
               <span class="iconfont icon-mima"></span>
               <input type="password" class="form-control" name="password" />
+              <span style="display: none;">123</span>
             </div>
             <div class="row mb-4">
               <button type="submit" class="btn btn-primary">注册</button>
@@ -53,16 +56,18 @@
           <div class="container row header mb-4">
             <h2>欢迎登录</h2>
           </div>
-          <form action="" class="container">
+          <form autocomplete="off" action="" class="container">
             <!-- 账号 -->
             <div class="row mb-4 form-group">
               <span class="iconfont icon-yonghu"></span>
-              <input type="text" class="form-control" name="username" />
+              <input value="yaoqi666" type="text" class="form-control" name="username" />
+              <span style="display: none;">123</span>
             </div>
             <!-- 密码 -->
             <div class="row mb-4 form-group">
               <span class="iconfont icon-mima"></span>
-              <input type="password" class="form-control" name="password" />
+              <input value="123123" type="text" class="form-control" name="password" />
+              <span style="display: none;">123</span>
             </div>
             <div class="row mb-4">
               <button type="submit" class="btn btn-primary">登录</button>
@@ -83,8 +88,10 @@
   <script src="./assets/lib/validator/bootstrapValidator.min.js"></script>
   <script src="./assets/lib/axios.js"></script>
   <script src="./assets/utils/toastr.js"></script>
-<!-- 引入注册js -->
-<script src="./assets/js/login.js"></script>
+  <!-- 公共js 设置到axios.js后面 本页面js之前 -->
+  <script src="./assets/js/common.js"></script>
+  <!-- 引入注册js -->
+  <script src="./assets/js/login.js"></script>
 </body>
 
 </html>
