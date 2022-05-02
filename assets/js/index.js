@@ -27,3 +27,27 @@ function toggleSlide() {
 
 toggleSlide();
 
+// 2. 退出按钮
+document.querySelector('.logout').addEventListener('click',function(){
+  if (confirm('退吗')) {
+    location.href = './login.html'
+    localStorage.removeItem('token')
+  }
+})
+
+
+// 3. 初始化
+document.querySelector('.init').addEventListener('click',function(){
+  axios({
+  method:'get',
+  url:'/init/data',
+  // headers : {
+  //   Authorization : localStorage.getItem('token')
+  // }
+  }).then(({data : res})=>{
+  console.log(res)
+  if (res.code == 0) {
+    toastr.success(res.message)
+  }
+  })
+})

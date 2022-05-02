@@ -545,3 +545,19 @@ const setMap = _ => {
 }
 // 调用函数  函数不调用不执行 
 setMap ()
+
+
+
+// 01 渲染班级概况 
+axios({
+method:'get',
+url:'/student/overview',
+}).then(({data : res})=>{
+console.log(res)
+if (res.code == 0) {
+  document.querySelector('.total').innerHTML = res.data.total
+  document.querySelector('.avgSalary').innerHTML = res.data.avgSalary
+  document.querySelector('.avgAge').innerHTML = res.data.avgAge
+  document.querySelector('.proportion').innerHTML = res.data.proportion
+}
+})
