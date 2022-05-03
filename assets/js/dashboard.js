@@ -1,5 +1,5 @@
 // 饼形图 -- 封装函数特点 : 变量名方便 , 方便ajax渲染
-const setPie = _ => {
+const setPie = arr => {
     let myChart = echarts.init(document.querySelector('.pie'))
     let option = {
         // 新增添加标题
@@ -47,33 +47,19 @@ const setPie = _ => {
                 borderRadius: 4
               },
               // 内容
-              data: [
-                { value: 6, name: '广东省' },
-                { value: 4, name: '甘肃省' },
-                { value: 1, name: '河南省' },
-                { value: 6, name: '广西壮族自治区' },
-                { value: 5, name: '黑龙江省' },
-                { value: 4, name: '西藏自治区' },
-                { value: 2, name: '河北省' },
-                { value: 3, name: '云南省' },
-                { value: 4, name: '内蒙古自治区' },
-                { value: 4, name: '湖南省' },
-                { value: 7, name: '江苏省' },
-                { value: 4, name: '山东省' },
-                { value: 6, name: '新疆维吾尔族自治区' },
-              ]
+              data: arr
             }
           ]
         };
     myChart.setOption(option)
 }
 // 调用函数  函数不调用不执行 
-setPie ()
+// setPie ()
 
 
 
 // 折线图  -- 封装函数特点 : 变量名方便 , 方便ajax渲染
-const setLine = _ => {
+const setLine = obj => {
     let myChart = echarts.init(document.querySelector('.line'))
     // 删除随机数代码 , 控制x轴坐标值的数据
   // let base = +new Date(1968, 9, 3);
@@ -130,7 +116,7 @@ const setLine = _ => {
     // 两侧是否留白 false不留白 true留白
     boundaryGap: false,
     // 修改x轴坐标值
-    data:  ['张三', '李四', '张飞', '赵云', '狗哥', '张三', '李四', '张飞', '赵云', '狗哥', '张三', '李四', '张飞', '赵云', '狗哥', '张三', '李四', '张飞', '赵云', '狗哥']
+    data:  obj.name
   },
   // y轴
   yAxis: {
@@ -176,7 +162,7 @@ const setLine = _ => {
       //   ])
       // },
     // 修改了期望薪资的数据
-      data: [8300, 9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000]
+      data: obj.salary
     },
     {
       // 第二条线的名字
@@ -192,19 +178,19 @@ const setLine = _ => {
       },
   // 删除areaStyle 控制面积颜色删除
     // 修改了期望薪资的数据
-      data: [9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000, 8300, 9600, 15000, 17000, 12000, 13000]
+      data: obj.truesalary
     }
   ]
 };
     myChart.setOption(option)
 }
 // 调用函数  函数不调用不执行  
-setLine ()
+// setLine ()
 
 
 
 // 柱状图  -- 封装函数特点 : 变量名方便 , 方便ajax渲染
-const setBar = _ => {
+const setBar = obj => {
     let myChart = echarts.init(document.querySelector('.barChart'))
     let option = {
         // 鼠标移入提示框
@@ -250,7 +236,7 @@ const setBar = _ => {
             // type 类别category类型
             type: 'category',
             // 数值
-            data: ['1组', '2组', '3组', '4组', '5组', '6组', '7组'],
+            data: obj.group,
             // x轴样式设置
             axisPointer: {
               type: 'shadow' //鼠标进入 有阴影
@@ -296,7 +282,7 @@ const setBar = _ => {
             //   }
             // },
             // 数值
-            data:[83, 57, 90, 78, 66, 76, 77, 87, 69, 92, 88, 78]
+            data: obj.avgScore
           },
           {
             name: '低于60分人数',//第2根柱子的名字
@@ -305,7 +291,7 @@ const setBar = _ => {
             barWidth : '15' , //柱子宽度
          // 删除提示框外边有了没用  
         // 数值
-            data: [2, 1, 3, 4, 2, 5, 2, 2, 4, 1, 6, 2]
+            data: obj.lt60
           },
           {
             name: '60到80分之间', // 第3根柱子的名字
@@ -314,7 +300,7 @@ const setBar = _ => {
            // 删除提示框外边有了没用  
            barWidth : '15' , //柱子宽度
           // 数值
-            data: [3, 2, 1, 5, 1, 2, 3, 4, 5, 2, 2, 4]
+            data: obj.gt60
           },{
             name: '高于80分人数', // 第4根柱子的名字
             type: 'bar', // 样式 bar柱子
@@ -322,51 +308,25 @@ const setBar = _ => {
            // 删除提示框外边有了没用  
            barWidth : '15' , //柱子宽度
           // 数值
-            data: [ 9, 5, 4, 3, 6, 7, 5, 6, 8, 6, 7, 9,]
+            data: obj.gt80
           }
         ]
       };
     myChart.setOption(option)
 }
 // 调用函数  函数不调用不执行 
-setBar ()
+// setBar ()
 
 
 
 // 地图  -- 封装函数特点 : 变量名方便 , 方便ajax渲染
-const setMap = _ => {
+const setMap = (a,b) => {
     let myChart = echarts.init(document.querySelector('.map'))
-    console.log(document.querySelector('.map'));
+    // console.log(document.querySelector('.map'));
     
   // 位置 + 经纬度
-  let chinaGeoCoordMap = {
-    "顺义校区": [
-        116.4551,
-        40.2539
-    ],
-    "海拉尔区": [
-        119.736279,
-        49.212189
-    ],
-    "市中区": [
-        116.997777,
-        36.651474
-    ],
-};
-  let chinaDatas = [
-    [
-        {
-            "name": "海拉尔区",
-            "value": 0
-        }
-    ],
-    [
-        {
-            "name": "市中区",
-            "value": 0
-        }
-    ],
-];
+  let chinaGeoCoordMap = a
+  let chinaDatas = b
 
   let convertData = function (data) {
     let res = [];
@@ -544,7 +504,7 @@ const setMap = _ => {
     myChart.setOption(option)
 }
 // 调用函数  函数不调用不执行 
-setMap ()
+// setMap ()
 
 
 
@@ -553,7 +513,7 @@ axios({
 method:'get',
 url:'/student/overview',
 }).then(({data : res})=>{
-console.log(res)
+// console.log(res)
 if (res.code == 0) {
   document.querySelector('.total').innerHTML = res.data.total
   document.querySelector('.avgSalary').innerHTML = res.data.avgSalary
@@ -561,3 +521,105 @@ if (res.code == 0) {
   document.querySelector('.proportion').innerHTML = res.data.proportion
 }
 })
+
+
+
+//  02 点击按钮显示隐藏第几次成绩
+let btn = document.querySelector('.panel .btn')
+let ul = document.querySelector('#batch')
+btn.addEventListener('click',function(){
+  if (ul.style.display == 'none') {
+    ul.style.display = 'block'
+  }else {
+    ul.style.display = 'none'
+  }
+})
+
+
+// console.log(document.querySelectorAll('#batch li'));
+const lis = document.querySelectorAll('#batch li')
+for( let i = 0 ; i < lis.length ; i++) {
+  lis[i].addEventListener('click',function(){
+    axios({
+    method:'get',
+    url:'/score/batch',
+    params : {batch:i+1}
+    }).then(({data : res})=>{
+    // console.log(res)
+    if (res.code == 0) {
+      setBar(res.data)
+    }
+    })
+  })
+}
+// 模拟点击li
+lis[0].click()
+
+// 发送ajax获取学员信息
+  axios({
+  method:'get',
+  url:'/student/list',
+  }).then(({data : res})=>{
+  // let {data} = res
+  // console.log(res)
+  // console.log(({data : res}));
+  // console.log(({data}));
+  if (res.code == 0) {
+
+    // 折线图
+    let lineData = {
+      name : [] ,
+      salary : [] ,
+      truesalary : []
+    }
+    // 饼图
+    let pieData = []
+    // 地图
+    let mapDat1 = {'顺义校区': [116.4551, 40.2539]}
+    let mapDat2 = []
+
+
+
+
+
+    // 遍历
+    res.data.forEach(item => {
+
+      // 折线图
+      lineData.name.push(item.name)
+      lineData.salary.push(item.salary)
+      lineData.truesalary.push(item.truesalary)
+
+
+      // 饼图
+      let index = pieData.findIndex(ele => ele.name == item.province)
+      if (index == -1) {
+        pieData.push({value: 1 , name:item.province})
+      }else {
+        pieData[index].value++
+      }
+
+
+      // 地图
+      mapDat1[item.county] = [item.jing , item.wei]
+      let i = mapDat2.findIndex(ele => ele[0].name == item.county)
+      if (i == -1) {
+        mapDat2.push([{name : item.county , value : 1}])
+      }else {
+        mapDat2[i][0].value++
+      }
+
+    })
+
+  
+
+
+    // 渲染
+    setLine(lineData)
+    // console.log(lineData);
+    setPie(pieData)
+    // console.log(pieData);
+    setMap(mapDat1 , mapDat2)
+    console.log(mapDat1 , mapDat2);
+  }
+  })
