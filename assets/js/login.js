@@ -104,5 +104,5 @@ const form1 = document.querySelector('.register form')
         location.href = './index.html'
         localStorage.setItem('token',res.token)
      }
-     })
+    })
  })

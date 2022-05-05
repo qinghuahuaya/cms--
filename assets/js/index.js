@@ -45,7 +45,7 @@ document.querySelector('.init').addEventListener('click',function(){
   //   Authorization : localStorage.getItem('token')
   // }
   }).then(({data : res})=>{
-  console.log(res)
+  // console.log(res)
   if (res.code == 0) {
     toastr.success(res.message)
   }

@@ -41,7 +41,16 @@ axios.interceptors.response.use(function (response) {
     // 对请求错误做些什么
     // console.dir(error);
     if (error.response.data.message == "身份认证失败") {
-        location.href = './login.html'
+   
         localStorage.removeItem('token')
+        if (location.href.indexOf('index.html') != -1) {
+            location.href = './login.html'
+        }else {
+            location.href = './login.html'
+        }
+    }else {
+        toastr.error(error.response.data.message)
     }
+    return promise.reject(error)
      });
+

@@ -620,6 +620,6 @@ lis[0].click()
     setPie(pieData)
     // console.log(pieData);
     setMap(mapDat1 , mapDat2)
-    console.log(mapDat1 , mapDat2);
+    // console.log(mapDat1 , mapDat2);
   }
   })
